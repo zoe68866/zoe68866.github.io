@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>葉子羽個人簡介</title>
+    <title>個人簡介</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #EE82EE;
+            background-color: #f4f4f4;
         }
         .container {
             width: 80%;
@@ -79,6 +79,36 @@
             background-color: #333;
             text-align: center;
         }
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 2px solid #333;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +120,7 @@
             <nav>
                 <ul>
                     <li><a href="#about">關於我</a></li>
-                    <li><a href="#skills">興趣</a></li>
+                    <li><a href="#skills">技能</a></li>
                     <li><a href="#contact">聯絡我</a></li>
                 </ul>
             </nav>
@@ -107,20 +137,35 @@
     <section class="content" id="about">
         <div class="container">
             <h2>關於我</h2>
-            <p>我是葉子羽，一名學生。我擁有15年當學生的經驗，專注於學業。我熱愛學習新技術並應用於實際項目中。</p>
+            <p>我是[你的名字]，一名[你的職業]。我擁有[你的經驗年數]年的經驗，專注於[你的專業領域]。我熱愛學習新技術並應用於實際項目中。</p>
         </div>
     </section>
 
     <section class="content" id="skills">
         <div class="container">
-            <h2>興趣</h2>
+            <h2>技能</h2>
             <p>以下是我擅長的技能：</p>
             <ul>
-                <li>準時繳交作業</li>
-                <li>游泳</li>
-                <li></li>
+                <li>技能1</li>
+                <li>技能2</li>
+                <li>技能3</li>
                 <li>技能4</li>
             </ul>
+        </div>
+    </section>
+
+    <section class="content" id="carousel">
+        <div class="container">
+            <h2>圖片輪播</h2>
+            <div class="carousel">
+                <img src="image1.jpg" class="active" alt="Image 1">
+                <img src="image2.jpg" alt="Image 2">
+                <img src="image3.jpg" alt="Image 3">
+                <div class="carousel-controls">
+                    <button id="prev">上一張</button>
+                    <button id="next">下一張</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -136,5 +181,83 @@
     <footer>
         <p>版權所有 &copy; 2023 [你的名字]</p>
     </footer>
+
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        });
+
+        // Auto slide
+        setInterval(() => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        }, 3000);
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        });
+
+        // Auto slide
+        setInterval(() => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(currentIndex);
+        }, 3000);
+
+        // Top button
+        const topButton = document.createElement('button');
+        topButton.innerText = 'Top';
+        topButton.style.position = 'fixed';
+        topButton.style.bottom = '20px';
+        topButton.style.right = '20px';
+        topButton.style.padding = '10px';
+        topButton.style.backgroundColor = '#333';
+        topButton.style.color = '#fff';
+        topButton.style.border = 'none';
+        topButton.style.cursor = 'pointer';
+        topButton.style.display = 'none';
+        document.body.appendChild(topButton);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                topButton.style.display = 'block';
+            } else {
+                topButton.style.display = 'none';
+            }
+        });
+
+        topButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
