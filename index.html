@@ -50,41 +50,61 @@
             padding: 0 20px 0 20px;
         }
 
-        header #branding {
-            float: left;
-        }
-
-        header #branding h1 {
-            margin: 0;
-        }
-
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-
         .showcase {
             min-height: 400px;
-            background: url('showcase.jpg') no-repeat 0 -400px;
+            background: url('showcase.jpg') no-repeat center center/cover; /* 背景圖片居中顯示，並保持比例 */
             text-align: center;
             color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        .showcase h1 {
-            margin-top: 100px;
-            font-size: 55px;
-            margin-bottom: 10px;
+        .showcase h1, .showcase p {
+            margin: 10px 0; /* 調整間距 */
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        .showcase {
+    min-height: 400px;
+    background: url('showcase.jpg') no-repeat center center/cover; /* 確保背景圖片適合顯示 */
+    text-align: center;
+    color: #fff; /* 確保文字顏色為白色，與背景圖片對比明顯 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* 確保文字在容器內可見 */
+}
+
+        .showcase h1, .showcase p {
+            margin: 10px 0;
+            color: #130101; /* 確保文字為白色 */
+            opacity: 1; /* 確保文字完全顯示 */
+            transform: translateY(0); /* 確保文字在初始狀態可見 */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .showcase h1 {
+            font-size: 55px; /* 確保標題大小正常顯示 */
+        }
+
         .showcase p {
             font-size: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
         }
+
 
         .content {
             padding: 20px;
@@ -163,8 +183,8 @@
 
     <section class="showcase">
         <div class="container">
-            <h1>投資知識，得益最高。</h1>
-            <p>這裡展示了我的技能和經歷</p>
+            <h1>機會是留給準備好的人。</h1>
+            <p>你沒有機會別瞎準備</p>
         </div>
     </section>
 
